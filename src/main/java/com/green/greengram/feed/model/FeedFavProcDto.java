@@ -2,11 +2,11 @@ package com.green.greengram.feed.model;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Builder
-public class FeedSelDto { // 페이징 처리
+public class FeedFavProcDto {
+    private int ifeed;
     private int iuser;
-    private int startIdx;
-    private int rowCount;
 }

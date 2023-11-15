@@ -2,8 +2,8 @@ package com.green.greengram.user;
 
 import com.green.greengram.ResVo;
 import com.green.greengram.user.model.UserInsDto;
+import com.green.greengram.user.model.UserSigninVo;
 import com.green.greengram.user.model.UserSigninDto;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +20,7 @@ public class UserController { // 요청받고 응답
     }
 
     @PostMapping("/signin")
-    public ResVo login(@RequestBody UserSigninDto dto) {
+    public UserSigninVo login(@RequestBody UserSigninDto dto) {
         return service.signin(dto);
     }
 

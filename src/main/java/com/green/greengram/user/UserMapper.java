@@ -1,11 +1,13 @@
 package com.green.greengram.user;
 
 import com.green.greengram.user.model.UserInsDto;
+import com.green.greengram.user.model.UserSigninProcVo;
+import com.green.greengram.user.model.UserSigninVo;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface UserMapper {
     int insUser(UserInsDto udto);
-    String selUserByUid(String uid);
+    UserSigninProcVo selUserByUid(String uid);
 
 }

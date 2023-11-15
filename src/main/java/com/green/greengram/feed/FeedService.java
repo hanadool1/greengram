@@ -28,9 +28,10 @@ public class FeedService {
         return new ResVo(pDto.getIfeed());
     }
 
-    public List<FeedSelVo> getFeed(int page) {
+    public List<FeedSelVo> getFeed(int page, int iuser) {
         final int ROW_COUNT = 30;
         FeedSelDto dto = FeedSelDto.builder() // 페이징 처리를 위한 DTO 생성
+                .iuser(iuser)
                 .startIdx((page - 1) * ROW_COUNT)
                 .rowCount(ROW_COUNT)
                 .build();
@@ -59,6 +60,20 @@ public class FeedService {
         }
 
         return feedSelVoList;
+    }
+
+    // 좋아요 : 1, 취소 : 2
+    public ResVo procFav(FeedFavProcDto dto) {
+        int affectedRow = mapper.delFeedFav(dto);
+        if(affectedRow == 1) {
+            return new ResVo(2);
+        }
+
+        int affectedRow2 = mapper.insFeedFav(dto);
+        if(affectedRow2 == 1) {
+            return new ResVo(1);
+        }
+        return null;
     }
 
 }
